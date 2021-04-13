@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/assetforge_parts/models/terrain/bed_floor.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://addons/assetforge_loader/gui/MeshContainer.gd" type="Script" id=2]
+
+[sub_resource type="Environment" id=1]
+ambient_light_color = Color( 0.835294, 0.835294, 0.835294, 1 )
+
+[sub_resource type="World" id=2]
+environment = SubResource( 1 )
+
+[node name="Control" type="HBoxContainer"]
+anchor_right = 0.179688
+anchor_bottom = 0.0666667
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 184, 40 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_right = 74.0
+margin_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 11
+size_flags_vertical = 11
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 74, 40 )
+own_world = true
+world = SubResource( 2 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="MeshInstance" type="MeshInstance" parent="ViewportContainer/Viewport"]
+mesh = ExtResource( 1 )
+skeleton = NodePath("")
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="Camera" type="Camera" parent="ViewportContainer/Viewport"]
+transform = Transform( 0.756219, -0.286855, 0.588088, 0, 0.898779, 0.438403, -0.654319, -0.331528, 0.679674, 0.9336, 0.683467, 0.949741 )
+current = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 78.0
+margin_right = 184.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "terrain/bed_floor"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
